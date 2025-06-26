@@ -36,7 +36,7 @@ git clone <your-repo-url>
 cd google-calendar-mcp
 
 # Install required packages
-pip install -r requirements.txt
+uv sync
 ```
 
 ### Step 3: Set Up Environment Variables
@@ -53,9 +53,7 @@ Edit `.env` with your Nango credentials:
 ```bash
 # Required Nango Configuration
 NANGO_NANGO_BASE_URL=https://api.nango.dev
-NANGO_NANGO_SECRET_KEY=your_nango_secret_key_here
-
-# Required Google Calendar Connection  
+NANGO_NANGO_SECRET_KEY=your_nango_secret_key_here 
 NANGO_CONNECTION_ID=your_connection_id_here
 NANGO_INTEGRATION_ID=your_integration_id_here
 ```
@@ -137,13 +135,13 @@ python -c "import os; print('✅ All env vars set!' if all([os.getenv('NANGO_CON
 npm install -g @modelcontextprotocol/inspector
 
 # Test your server
-npx @modelcontextprotocol/inspector python calendar_mcp_server.py
+npx @modelcontextprotocol/inspector python main.py
 ```
 
 ### Option 2: Direct Python Test
 ```bash
 # Run the server directly to see if it starts without errors
-python calendar_mcp_server.py
+python main.py
 ```
 
 ### Option 3: Test with Claude
@@ -219,17 +217,6 @@ Once set up, you can have natural conversations with Claude about your calendar:
 - **Google access**: Managed through Nango's secure OAuth flow
 - **Data handling**: All calendar data stays between your Google account, Nango, and Claude
 - **No data storage**: This MCP server doesn't store any of your calendar information
-
-## 📦 Requirements
-
-```
-mcp>=1.0.0
-google-api-python-client>=2.0.0
-google-auth-oauthlib>=1.0.0
-google-auth-httplib2>=0.2.0
-python-dotenv>=1.0.0
-requests>=2.31.0
-```
 
 ## 🤝 Contributing
 
